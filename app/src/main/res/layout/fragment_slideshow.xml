@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="250dp"
         android:layout_marginTop="15dp"
-        android:background="@color/design_default_color_error"
+        android:background="#FF0000"
         android:text="Nova Despesa"
         android:textColor="@color/white" />
 
@@ -30,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/texto_total_despesa"
-        android:layout_marginTop="353dp"
+        android:layout_marginTop="356dp"
         android:text="Texto do Slideshow"
         android:textAlignment="center"
         android:textSize="20sp" />
