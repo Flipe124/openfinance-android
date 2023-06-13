@@ -25,10 +25,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Inflar o layout da atividade usando o ViewBinding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Configurar a barra de ferramentas (toolbar) como a ActionBar
         setSupportActionBar(binding.appBarMain.toolbar);
+
+        // Configurar um listener de clique para o botão de ação flutuante (fab)
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,28 +40,37 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        // Obter referências para o DrawerLayout e NavigationView
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        // Configurar o AppBarConfiguration com os destinos de navegação (IDs dos menus)
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
                 .build();
+
+        // Obter o NavController para a navegação
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+
+        // Configurar a ActionBar para trabalhar com o NavController
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+
+        // Configurar o NavigationView para trabalhar com o NavController
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflar o menu; isso adiciona itens à ActionBar, se estiver presente.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onSupportNavigateUp() {
+        // Configurar o suporte para navegação "Up" (voltar)
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
